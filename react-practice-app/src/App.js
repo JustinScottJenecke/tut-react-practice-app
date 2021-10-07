@@ -9,16 +9,22 @@ function Header(props) {
   );
 }
 
+const menu = ["Slap Chips", "Samoosa", "Doughnuts", "Score", "Gebba"];
+
+const menuItems = menu.map( (item, index) => (
+  {id: index, title:item}
+));
+
 function Main (props) {
   return(
-    <div>
+    <>
       <p>Menu:</p>
       <ul style={ { textAlign: "left" } }>
-        {props.menu.map(element => (
-          <li>{element}</li>
+        {props.menuItems.map( element => (
+          <li key={element.index}>{element.title}</li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
 
@@ -31,13 +37,11 @@ function Footer(props) {
   );
 }
 
-const menu = ["Slap Chips", "Samoosa", "Doughnuts", "Score", "Gebba"];
-
 function App() {
   return (
     <div className="App">
       <Header name="Joe's" />
-      <Main menu={menu}/>
+      <Main menu={menuItems}/>
       <Footer year={new Date().getFullYear()}/>
     </div>
   );
